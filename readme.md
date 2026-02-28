@@ -66,21 +66,6 @@ JavaScript (Vanilla JavaScript)
 localStorage API
 No external frameworks or libraries are used. The project focuses on core web development concepts.
 
-Project Structure
-GreenGuard/
-│
-├── client/
-│   ├── index.html
-│   ├── indexstyle.css
-│   ├── user.js
-│
-├── admin/
-│   ├── index.html
-│   ├── style.css
-│   ├── script.js
-│
-└── README.md
-
 How to Run the Project
 Clone the repository:
 git clone <repository-url>
@@ -113,3 +98,4 @@ Cloud deployment for public access
 
 Vision
 GreenGuard is designed as a foundational step toward building a scalable civic participation platform. With backend integration, analytics, and intelligent prioritization features, it can evolve into a robust complaint management and urban governance support system.
+
