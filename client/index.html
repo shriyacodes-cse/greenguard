@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GreenGuard</title>
+    <link rel="stylesheet" href="indexstyle.css">
+    <script src="user.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>GreenGuard</h1>
+            <p>Report - Revolve - Resolve</p>
+        </div>
+    </header>
+
+    <section class="report-section">
+        <div class="container">
+            <h2 style="text-align: center;">Submit a Complaint</h2>
+
+            <form id="complaintForm">
+                <input type="text" placeholder="Your Name" required><br>
+                <input type="text" placeholder="Location" required><br>
+                <select name="location" required>
+                    <option value="" disabled selected>Select Location</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Madurai">Madurai</option>
+                    <option value="Salem">Salem</option>
+                    <option value="Tiruchirappalli">Tiruchirappalli</option>
+                    <option value="Erode">Erode</option>
+                    <option value="Tirunelveli">Tirunelveli</option>
+                    <option value="Vellore">Vellore</option>
+                    <option value="Thoothukudi">Thoothukudi</option>
+                    <option value="Ooty">Ooty</option>
+                </select>
+                <textarea placeholder="Describe the issue..." required></textarea><br>
+                <input type="file"><br>
+                <button type="submit">Submit Report</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="complaints-section">
+        <div class="container">
+            <h2>Recent Complaints</h2>
+
+            <div class="complaint-card">
+                <h3>Garbage Dump Near Park</h3>
+                <p>The waste is getting accumulated near the park and not being cleared regularly.</p>
+                <span class="status new">New</span>
+            </div>
+
+            <div class="complaint-card">
+                <h3>Garbage Dump near hospital</h3>
+                <p>Medi-Waste has not been cleared for over a week and it smells really bad.</p>
+                <span class="status new">New</span>
+            </div>
+
+            <div class="complaint-card">
+                <h3>Garbage Dump behind school compoud.</h3>
+                <p>The people in the neighbour are continuously dumping garbage behind the school compound.It is
+                    attracting pests and creating a bad smell.</p>
+                <span class="status new">New</span>
+            </div>
+
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
