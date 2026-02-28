@@ -3,16 +3,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("complaintForm");
   const complaintsSection = document.querySelector(".complaints-section .container");
 
-  let currentUser = "";
+  // Load saved username (if exists)
+  const savedUser = localStorage.getItem("username");
+  if (savedUser) {
+    loadPoints(savedUser);
+  }
 
+  // Submit complaint
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const name = form.querySelector('input[type="text"]').value;
+    const name = form.querySelector('input[type="text"]').value.trim();
     const location = form.querySelector("select").value;
     const description = form.querySelector("textarea").value;
 
-    currentUser = name;
+    if (!name) {
+      alert("Please enter your name");
+      return;
+    }
+
+    // Save username in browser
+    localStorage.setItem("username", name);
 
     const data = {
       name: name,
@@ -27,38 +38,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     alert("Complaint submitted successfully.");
+
     form.reset();
 
     loadComplaints();
-    loadPoints(currentUser);
+    loadPoints(name);
   });
 
+  // Load complaints
   async function loadComplaints() {
-    const res = await fetch("http://127.0.0.1:8000/all");
-    const data = await res.json();
+  const res = await fetch("http://127.0.0.1:8000/all");
+  const data = await res.json();
 
-    complaintsSection.innerHTML = `
-      <h3 id="userPoints">Points: 0</h3>
-      <h2>Recent Complaints</h2>
+  const container = document.querySelector(".complaints-section .container");
+
+  // Remove old cards only
+  const oldCards = document.querySelectorAll(".complaint-card");
+  oldCards.forEach(card => card.remove());
+
+  data.forEach(item => {
+    container.innerHTML += `
+      <div class="complaint-card">
+        <h3>${item[3]}</h3>
+        <p>Location: ${item[2]}</p>
+        <span class="status ${
+          item[4] === "Resolved" ? "resolved" :
+          item[4] === "In Progress" ? "in-progress" :
+          "new"
+        }">
+          ${item[4]}
+        </span>
+      </div>
     `;
+  });
+}
 
-    data.forEach(item => {
-      complaintsSection.innerHTML += `
-        <div class="complaint-card">
-          <h3>${item[3]}</h3>
-          <p>Location: ${item[2]}</p>
-          <span class="status ${
-            item[4] === "Resolved" ? "resolved" :
-            item[4] === "In Progress" ? "in-progress" :
-            "new"
-          }">
-            ${item[4]}
-          </span>
-        </div>
-      `;
-    });
-  }
-
+  // Load points
   async function loadPoints(name) {
     if (!name) return;
 
@@ -71,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Initial load
   loadComplaints();
 
 });
