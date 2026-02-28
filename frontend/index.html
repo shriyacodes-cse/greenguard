@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GreenGuard</title>
+    <link rel="stylesheet" href="indexstyle.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-box">
+        <img src="logo.png" alt="GreenGuard Logo" class="logo">
+        <div>
+            <h1>GreenGuard</h1>
+            <p>Report - Revolve - Resolve</p>
+        </div>
+    </div>
+</header>
+
+<section class="report-section">
+    <div class="container">
+        <h2>Submit a Complaint</h2>
+
+        <form id="complaintForm">
+            <input type="text" placeholder="Enter your Name" required>
+
+            <select required>
+                <option value="" disabled selected>Select Location</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Madurai">Madurai</option>
+                <option value="Salem">Salem</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Erode">Erode</option>
+                <option value="Tirunelveli">Tirunelveli</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Thoothukudi">Thoothukudi</option>
+                <option value="Ooty">Ooty</option>
+            </select>
+
+            <textarea placeholder="Describe the issue..." required></textarea>
+
+            <!-- File upload (UI only unless backend supports it) -->
+            <input type="file">
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+</section>
+
+<section class="complaints-section">
+    <div class="container">
+
+        <!-- Points -->
+        <h3 id="userPoints">Points: 0</h3>
+
+        <h2>Recent Complaints</h2>
+
+        <!-- Complaints load dynamically here -->
+
+    </div>
+</section>
+
+<!-- IMPORTANT: Load JS at bottom -->
+<script src="user.js"></script>
+
+</body>
+</html>
